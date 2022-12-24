@@ -18,7 +18,7 @@ public class AppClient extends Application {
         stage.setWidth(800);
         stage.setHeight(600);
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/layouts/AllRoomsWindow.fxml"));
+        loader.setLocation(getClass().getResource("/layouts/WelcomeWindow.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.show();

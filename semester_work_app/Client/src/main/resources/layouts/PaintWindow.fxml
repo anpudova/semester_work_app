@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<VBox alignment="TOP_CENTER" spacing="40"
+      style="-fx-background-color: linear-gradient(to bottom left, #1D2671, #9037c3);"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.gui.controllers.PaintWindowController">
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+    <ImageView fx:id="logo_image" fitHeight="108" fitWidth="192" pickOnBounds="true" preserveRatio="true">
+        <Image url="/images/logo.png"/>
+    </ImageView>
+</VBox>

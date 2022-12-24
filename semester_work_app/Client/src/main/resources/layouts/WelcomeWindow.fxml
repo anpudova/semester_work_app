@@ -2,19 +2,18 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import com.sun.javafx.css.parser.CSSParser?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <VBox alignment="TOP_CENTER" spacing="50"
       style="-fx-background-color: linear-gradient(to bottom left, #1D2671, #9037c3);"
       xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.gui.controllers.WelcomeWindowController">
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.gui.controllers.WelcomeWindowController">
     <padding>
         <Insets top="20" bottom="20" left="20" right="20"/>
     </padding>
-    <ImageView fx:id="logo_image" fitHeight="108" fitWidth="192" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="108" fitWidth="192" pickOnBounds="true" preserveRatio="true">
         <Image url="/images/logo.png"/>
     </ImageView>
     <VBox spacing="35">
@@ -25,10 +24,9 @@
                style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 24"/>
         <Label text="Введи свое имя:"
                style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 18"/>
-        <TextField prefWidth="100" prefHeight="40"
-                   style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18">
-        </TextField>
+        <TextField fx:id="name" prefWidth="100" prefHeight="40"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
     </VBox>
-    <Button text="Играть" prefWidth="150" prefHeight="40"
+    <Button fx:id="btnPlay" text="Играть" prefWidth="150" prefHeight="40" onAction="#clickPlay"
             style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
 </VBox>

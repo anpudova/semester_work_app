@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<VBox alignment="TOP_CENTER" spacing="90"
+      style="-fx-background-color: linear-gradient(to bottom left, #a9243b, #c5731f);"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.gui.controllers.PhraseWriteWindowController">
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+    <ImageView fitHeight="90" fitWidth="160" pickOnBounds="true" preserveRatio="true">
+        <Image url="/images/logo.png"/>
+    </ImageView>
+    <VBox alignment="TOP_CENTER" spacing="40">
+        <Label text="Напиши предложение!" prefHeight="50"
+               style="-fx-font-family: sans-serif; -fx-text-fill: #ffffff; -fx-font-size: 30;"/>
+        <TextField prefHeight="40" prefWidth="150"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: #ffffff; -fx-font-size: 25;
+                    -fx-background-color: rgba(0,0,0,0); -fx-border-radius: 4; -fx-border-color: rgba(255,255,255,0.66)"/>
+    </VBox>
+
+</VBox>
