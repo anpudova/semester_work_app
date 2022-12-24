@@ -2,6 +2,7 @@ package org.example.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class AllRoomsWindowController {
     public List<Integer> roomsId;
 
 
-    public void init(ArrayList<Room> rooms) {
+    public void initialize(ArrayList<Room> rooms) {
         roomsId = new ArrayList<>();
         for (Room room: rooms) {
             roomsId.add(room.getNumber());
@@ -34,7 +35,7 @@ public class AllRoomsWindowController {
     }
 
     @FXML
-    public void clickJoinRoom() throws ClientException {
+    public void clickJoinRoom(ActionEvent actionEvent) throws ClientException {
         Pattern pattern = Pattern.compile("[0-9]+");
         if (pattern.matcher(roomId.getText()).find()) {
             id = Integer.valueOf(roomId.getText());
@@ -58,7 +59,7 @@ public class AllRoomsWindowController {
     }
 
     @FXML
-    public void clickCreateRoom() throws ClientException {
+    public void clickCreateRoom(ActionEvent actionEvent) throws ClientException {
         Stage stage = (Stage)btnCreateRoom.getScene().getWindow();
         stage.setScene(SceneHelper.getScene(Scenes.SCENE_WAIT_ROOM));
     }

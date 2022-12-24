@@ -17,7 +17,7 @@ public class WelcomeWindowController {
     public Button btnPlay;
     public TextField name;
 
-    public void clickPlay() throws ClientException {
+    public void clickPlay(ActionEvent actionEvent) throws ClientException {
         if (!name.getText().equals("")) {
             Stage stage = (Stage)btnPlay.getScene().getWindow();
             stage.setScene(SceneHelper.getScene(Scenes.SCENE_ALL_ROOMS));

@@ -15,8 +15,10 @@ public class AppClient extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Gartic Phone");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setHeight(800);
+        stage.setWidth(1100);
+        stage.setMinHeight(800);
+        stage.setMinWidth(1100);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/layouts/WelcomeWindow.fxml"));
         Parent root = loader.load();

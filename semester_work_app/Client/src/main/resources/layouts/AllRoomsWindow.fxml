@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<VBox alignment="TOP_CENTER" spacing="20"
-      style="-fx-background-color: linear-gradient(to bottom left, #1D2671, #9037c3);"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.gui.controllers.AllRoomsWindowController">
+<BorderPane style="-fx-background-color: linear-gradient(to bottom left, #1D2671, #9037c3);"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="org.example.gui.controllers.AllRoomsWindowController">
     <padding>
         <Insets top="20" bottom="20" left="20" right="20"/>
     </padding>
-    <ImageView fitHeight="108" fitWidth="192" pickOnBounds="true" preserveRatio="true">
-        <Image url="/images/logo.png"/>
-    </ImageView>
-    <Label text="Присоединяйся к нужной комнате и играй!" prefHeight="25"
-           style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 22"/>
-    <Label text="Номера активных комнат:" prefHeight="20"
-           style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 18"/>
-    <ListView fx:id="listRooms"/>
-    <HBox spacing="20">
-        <Label text="Комната №" prefHeight="40"
-               style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 18"/>
-        <TextField fx:id="roomId" prefWidth="90" prefHeight="40"
-                   style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
-        <Button fx:id="btnJoin" text="Присоединиться" prefHeight="40" onAction="#clickJoinRoom"
-                style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
-        <Button fx:id="btnCreateRoom" text="Создать комнату" prefHeight="40" onAction="#clickCreateRoom"
-                style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
-    </HBox>
-</VBox>
+    <top>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <ImageView fitHeight="108" fitWidth="192" pickOnBounds="true" preserveRatio="true">
+                <Image url="/images/logo.png"/>
+            </ImageView>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20" maxWidth="1100" maxHeight="650"
+              style="-fx-border-radius: 5; -fx-border-color: rgba(255,255,255,0.5)">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+            <Label text="Присоединяйся к нужной комнате и играй!" prefHeight="25"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 22"/>
+            <Label text="Номера активных комнат:" prefHeight="20"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 18"/>
+            <ListView fx:id="listRooms"/>
+            <HBox spacing="20">
+                <Label text="Комната №" prefHeight="40"
+                       style="-fx-font-family: sans-serif; -fx-text-fill: white; -fx-font-size: 18"/>
+                <TextField fx:id="roomId" prefWidth="90" prefHeight="40"
+                           style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
+                <Button fx:id="btnJoin" text="Присоединиться" prefHeight="40" onAction="#clickJoinRoom"
+                        style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
+                <Button fx:id="btnCreateRoom" text="Создать комнату" prefHeight="40" onAction="#clickCreateRoom"
+                        style="-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 18"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
+
+

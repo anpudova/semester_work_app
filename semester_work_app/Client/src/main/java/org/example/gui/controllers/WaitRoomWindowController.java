@@ -2,6 +2,7 @@ package org.example.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Background;
@@ -28,7 +29,7 @@ public class WaitRoomWindowController {
         listPlayers.setItems(obsListNumber);
     }
 
-    public void clickReady() throws ClientException {
+    public void clickReady(ActionEvent actionEvent) throws ClientException {
         btnReady.setStyle(
                 "-fx-font-family: sans-serif; -fx-text-fill: #1D2671; -fx-font-size: 20; -fx-background-color: #bbbbbb"
         );
