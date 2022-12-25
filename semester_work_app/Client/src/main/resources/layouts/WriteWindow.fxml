@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane style="-fx-background-color: linear-gradient(to bottom left, #a9243b, #c5731f);"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="org.example.gui.controllers.WriteWindowController">
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+    <top>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <ImageView fitHeight="90" fitWidth="160" pickOnBounds="true" preserveRatio="true">
+                <Image url="/images/logo.png"/>
+            </ImageView>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20" maxWidth="1100" maxHeight="650"
+              style="-fx-border-radius: 5; -fx-border-color: rgba(255,255,255,0.5)">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+            <Label text="Пора писать!" prefHeight="35"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: #ffffff; -fx-font-size: 22;"/>
+            <!-- окно с рисунком -->
+            <Label text="Напиши, что ты видишь на рисунке:" prefHeight="30"
+                   style="-fx-font-family: sans-serif; -fx-text-fill: #ffffff; -fx-font-size: 18;"/>
+            <TextField prefHeight="35" prefWidth="150"
+                       style="-fx-font-family: sans-serif; -fx-text-fill: #ffffff; -fx-font-size: 22;
+                -fx-background-color: rgba(0,0,0,0); -fx-border-radius: 4; -fx-border-color: rgba(255,255,255,0.66)"/>
+        </VBox>
+    </center>
+</BorderPane>
+

@@ -2,52 +2,65 @@ package org.example.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import org.example.exceptions.ClientException;
+import org.example.gui.helpers.SceneHelper;
+import org.example.gui.helpers.Scenes;
 import org.example.models.Room;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 
 public class AllRoomsWindowController {
-    @FXML
     public ListView<Integer> listRooms;
-    public Integer numberRoom;
+    public Integer id;
+    public TextField roomId;
+    public Button btnJoin;
+    public Button btnCreateRoom;
+    public List<Integer> roomsId;
 
 
-    public void init(ArrayList<Room> rooms) {
-        List<Integer> roomsNumber = new ArrayList<>();
+    public void initialize(ArrayList<Room> rooms) {
+        roomsId = new ArrayList<>();
         for (Room room: rooms) {
-            roomsNumber.add(room.getNumber());
+            roomsId.add(room.getNumber());
         }
-        ObservableList<Integer> obsListNumber = FXCollections.observableArrayList(roomsNumber);
+        ObservableList<Integer> obsListNumber = FXCollections.observableArrayList(roomsId);
         listRooms.setItems(obsListNumber);
     }
 
     @FXML
-    public void clickJoinRoom() {
-        TextInputDialog inputCodeRoomDialog = new TextInputDialog();
-        inputCodeRoomDialog.setTitle("Присоединиться");
-        inputCodeRoomDialog.setHeaderText("Введи номер комнаты");
-        Optional<String> result = inputCodeRoomDialog.showAndWait();
-        result.ifPresent(number -> {
-            Pattern patt = Pattern.compile("[0-9]+");
-            if (patt.matcher(number).find()) {
-                numberRoom = Integer.valueOf(number);
+    public void clickJoinRoom(ActionEvent actionEvent) throws ClientException {
+        Pattern pattern = Pattern.compile("[0-9]+");
+        if (pattern.matcher(roomId.getText()).find()) {
+            id = Integer.valueOf(roomId.getText());
+            // потом убрать и раскомментировать
+            Stage stage = (Stage)btnJoin.getScene().getWindow();
+            stage.setScene(SceneHelper.getScene(Scenes.SCENE_WAIT_ROOM));
+            /*
+            if (roomsId.contains(id)) {
+                Stage stage = (Stage)btnJoin.getScene().getWindow();
+                stage.setScene(SceneHelper.getScene(Scenes.SCENE_WAIT_ROOM));
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Номер комнаты должен состоять из чисел.");
-                alert.showAndWait();
-            }
-        });
+                Alert alert = new Alert(Alert.AlertType.NONE, "Такой комнаты не существует");
+                alert.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+                alert.show();
+            }*/
+        } else {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Номер комнаты состоит из чисел");
+            alert.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+            alert.show();
+        }
     }
 
     @FXML
-    public void clickCreateRoom() {
-
+    public void clickCreateRoom(ActionEvent actionEvent) throws ClientException {
+        Stage stage = (Stage)btnCreateRoom.getScene().getWindow();
+        stage.setScene(SceneHelper.getScene(Scenes.SCENE_WAIT_ROOM));
     }
 }
