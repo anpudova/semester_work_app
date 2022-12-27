@@ -5,6 +5,7 @@ import org.example.exceptions.IllegalVersionProtocolException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MessageInputStream extends InputStream {
@@ -27,7 +28,11 @@ public class MessageInputStream extends InputStream {
             throw new IllegalVersionProtocolException("Invalid ru.kpfu.itis.protocol version.");
         }
         byte typeMessage = (byte) in.read();
-        if (!Arrays.asList(MessageTypes.getTypes()).contains(typeMessage)) {
+        ArrayList<Byte> byteArrayList = new ArrayList<>();
+        for (Byte types : MessageTypes.getTypes()) {
+            byteArrayList.add(types);
+        }
+        if (!byteArrayList.contains(typeMessage)) {
             throw new IllegalTypeMessageException("Invalid message type");
         }
         int size = in.read() << 8 | in.read();
@@ -36,7 +41,7 @@ public class MessageInputStream extends InputStream {
             dataMessage[i] = (byte) in.read();
         }
 
-        return new Message(dataMessage, typeMessage);
+        return new Message(typeMessage, dataMessage);
     }
 
     @Override

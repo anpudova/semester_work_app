@@ -1,6 +1,9 @@
 package org.example.models;
 
-public class Player {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Player implements Serializable {
 
     private Integer id;
     private String name;
@@ -13,6 +16,5 @@ public class Player {
     public String getName() {
         return name;
     }
-
 
 }
