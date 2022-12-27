@@ -35,4 +35,28 @@ public class ClientConnection {
             throw new ClientException("The message was not sent.");
         }
     }
+
+    public Message acceptMessage() {
+        try {
+            return in.readMessage();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public MessageInputStream getIn() {
+        return in;
+    }
+
+    public MessageOutputStream getOut() {
+        return out;
+    }
 }

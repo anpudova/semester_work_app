@@ -19,10 +19,14 @@ public class ServerImpl implements Server{
     protected List<Connection> connections;
     protected List<ServerEventListener> eventListeners;
 
+    protected List<Room> rooms;
+
     public ServerImpl(int port) {
         this.port = port;
         this.started = false;
+        this.connections = new ArrayList<>();
         this.eventListeners = new ArrayList<>();
+        this.rooms = new ArrayList<>();
     }
 
     @Override
@@ -33,6 +37,7 @@ public class ServerImpl implements Server{
 
             while(true) {
                 Socket socket = serverSocket.accept();
+                System.out.println(socket);
                 handleConnect(socket);
             }
         } catch (IOException e) {
@@ -44,7 +49,7 @@ public class ServerImpl implements Server{
     private void handleConnect(Socket socket) throws ServerException {
         Connection connection;
         try {
-            connection = new Connection(socket);
+            connection = new Connection(this, socket);
         } catch (IOException e) {
             throw new ServerException("Connection problem.");
         }
@@ -80,14 +85,30 @@ public class ServerImpl implements Server{
             throw new ServerException("The server is not running yet.");
         }
         try {
-        for (Connection connect: connections) {
-            if (room.getAllPlayers().contains(connect.player)) {
-                connect.out.writeMessage(message);
-                connect.out.flush();
-            }
+            for (Connection connect: connections) {
+                if (room.getAllPlayers().contains(connect.player)) {
+                    connect.out.writeMessage(message);
+                    connect.out.flush();
+                }
         }
         } catch (IOException e) {
             throw new ServerException("The message was not sent.");
         }
     }
+
+    public void sendMessageAllConnections(Message message) {
+        try {
+            for (Connection connection : connections) {
+                connection.out.writeMessage(message);
+                connection.out.flush();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
 }
